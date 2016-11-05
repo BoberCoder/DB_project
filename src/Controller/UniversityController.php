@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Controllers;
+namespace Database\Controller;
 
 
 class UniversityController

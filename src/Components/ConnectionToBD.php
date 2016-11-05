@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Database\Components;
 
 class ConnectionToBD
 {
@@ -13,9 +13,7 @@ class ConnectionToBD
         if (!$this->connection) {
             echo "Connecting error";
         }
-        else {
-            echo "Connecting successfully\n";
-        }
+
     }
 
     public function getConection(){

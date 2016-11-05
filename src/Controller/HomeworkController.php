@@ -1,16 +1,14 @@
 <?php
 
-namespace Database\Controllers;
+namespace Database\Controller;
 
 class HomeworkController
 {
 
-    public function getMessage(){
+    public function actionList(){
 
         echo "This is HomeworkController";
-
     }
-
 
 }
 

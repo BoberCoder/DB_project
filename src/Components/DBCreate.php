@@ -24,6 +24,8 @@ class DBCreate
         $this->universityTable();
         $this->departmentsTable();
         $this->studentsTable();
+        $this->teacherTable();
+        $this->disciplineTable();
         $this->homeworksTable();
 
     }
@@ -33,14 +35,24 @@ class DBCreate
     }
 
     private function universityTable(){
-        $this->connector->query('CREATE TABLE university(id INT ,name VARCHAR(50))');
+        $this->connector->query('CREATE TABLE university(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50),town VARCHAR(30),site VARCHAR(40) )');
     }
 
     private function departmentsTable(){
-
+        $this->connector->query('CREATE TABLE department(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50),university_id INT ,FOREIGN KEY (university_id) REFERENCES university(id) ON DELETE CASCADE )');
     }
 
     private function studentsTable(){
+
+    }
+
+    private function teacherTable(){
+
+    }
+
+    private function disciplineTable(){
 
     }
 

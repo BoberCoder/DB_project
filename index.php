@@ -3,13 +3,16 @@
 include "vendor/autoload.php";
 include "src/config/ConnectionData.php";
 
-use Database\Components\ConnectionToBD;
 use Database\Components\Router;
 
-$connection = new ConnectionToBD($database, $username, $password);
+$connection = new \Database\Components\ConnectionToBD();
 
-$router = new Router();
-$router->run();
+$dbcreator = new \Database\Components\DBCreate($connection,$database,$username,$password);
+
+
+
+//$router = new Router();
+//$router->run();
 
 
 

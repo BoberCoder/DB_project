@@ -6,18 +6,33 @@ class ConnectionToBD
 {
     private $connection;
 
-    public function __construct($database,$username,$password)
+    public function connectToServer($username,$password)
     {
-        $this->connection = new \PDO("mysql:host=localhost;dbname=". $database. ";charset=UTF8",$username,$password);
+            $this->connection = new \PDO("mysql:host=localhost;charset=UTF8",$username,$password);
 
         if (!$this->connection) {
             echo "Connecting error";
         }
 
+        return $this->connection;
+
     }
 
-    public function getConection(){
+    public function connectToBase($database,$username,$password)
+    {
+        $this->connection = new \PDO("mysql:host=localhost;dbname=".$database.";charset=UTF8",$username,$password);
+
+        if (!$this->connection) {
+            echo "Connecting error";
+        }
+        else
+        {
+            echo "Connecting successfully";
+        }
+
         return $this->connection;
+
     }
+
 
 }

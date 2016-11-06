@@ -5,7 +5,7 @@ namespace Database\Controller;
 class DepartmentController
 {
 
-    public function listAction(){
+    public function actionList(){
 
         echo "This is DepartmentController";
     }

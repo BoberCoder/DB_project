@@ -25,10 +25,6 @@ class ConnectionToBD
         if (!$this->connection) {
             echo "Connecting error";
         }
-        else
-        {
-            echo "Connecting successfully";
-        }
 
         return $this->connection;
 

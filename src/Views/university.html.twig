@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>University</title>
+	</head>
+	<body>
+        <table border="1" align="center">
+            <tbody align="center">
+                <tr>
+                    <th>ID</th><th>Назва університету</th><th>Місто</th><th>Веб сайт</th>
+                </tr>
+                {% for university in university %}
+                <tr>
+                    <td>{{ university.id }}</td>
+                    <td>{{ university.name }}</td>
+                    <td>{{ university.town }}</td>
+                    <td>{{ university.site }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

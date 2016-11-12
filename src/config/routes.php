@@ -4,4 +4,5 @@ return array(
     'departments' => 'department/list',
     'students' => 'students/list',
     'homeworks' => 'homework/list',
+    'university/new' =>'university/new'
 );

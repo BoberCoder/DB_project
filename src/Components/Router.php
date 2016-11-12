@@ -29,7 +29,7 @@ class Router
         foreach ($this->routes as $uriPattern =>$path)
         {
 
-            if (preg_match("~$uriPattern~",$uri)){
+            if ("$uriPattern" == $uri){
 
                 $segments = explode('/',$path);
                 $controllerName = "\\Database\\Controller\\".ucfirst(array_shift($segments).'Controller');
@@ -38,8 +38,6 @@ class Router
 
                 $controller = new $controllerName($this->connection);
                 $controller->$actionName();
-
-
             }
         }
 

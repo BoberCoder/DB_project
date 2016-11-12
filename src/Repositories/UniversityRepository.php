@@ -28,9 +28,13 @@ class UniversityRepository implements RepositoryInterface
     {
         // TODO: Implement findBy() method.
     }
-    public function insert()
+    public function insert($universityData)
     {
-        // TODO: Implement insert() method.
+        $statement = $this->connector->prepare('INSERT INTO university (name, town, site) VALUES (:name, :town, :site)');
+        $statement->bindValue(':name',$universityData['name']);
+        $statement->bindValue(':town',$universityData['town']);
+        $statement->bindValue(':site',$universityData['site']);
+        return $statement->execute();
     }
     public function update()
     {

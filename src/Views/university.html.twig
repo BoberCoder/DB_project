@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>University</title>
+        <style>
+            a{
+              text-decoration: none; color: black;
+            }
+        </style>
 	</head>
 	<body>
         <table border="1" align="center">
@@ -16,10 +21,14 @@
                     <td>{{ university.name }}</td>
                     <td>{{ university.town }}</td>
                     <td>{{ university.site }}</td>
+                    <form method="post">
+                    <td><button id="remove"><a href="university/remove/{{ university.id }}">Видалити</a></button></td>
+                    <td><button id="edit"><a href="university/edit">Змінити</a></button></td>
+                    </form>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-    <a href="/university/new">Add new University</a>
+    <button><a href="/university/new">Add new University</a></button>
     </body>
 </html>

@@ -42,6 +42,8 @@ class UniversityRepository implements RepositoryInterface
     }
     public function delete()
     {
-        // TODO: Implement delete() method.
+        $statement = $this->connector->prepare("DELETE FROM university WHERE  id = :id");
+        $statement->bindvalue(':id',$universityData['id'],\PDO::PARAM_INT);
+        return $statement->execute();
     }
 }

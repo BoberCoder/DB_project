@@ -39,9 +39,14 @@ class UniversityController
                 'site' => $_POST['site']
             ]
         );
-        return $this->actionList();
+            return $this->actionList();
         }
         return $this->twig->display('university_new.html.twig');
+
+    }
+
+    public function actionRemove(){
+
     }
 
 }

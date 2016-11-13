@@ -29,15 +29,21 @@ class Router
         foreach ($this->routes as $uriPattern =>$path)
         {
 
-            if ("$uriPattern" == $uri){
+            if (preg_match("~$uriPattern~", $uri)){
 
-                $segments = explode('/',$path);
+                $internalRoute = preg_replace("~$uriPattern~",$path,$uri);
+
+                $segments = explode('/',$internalRoute);
                 $controllerName = "\\Database\\Controller\\".ucfirst(array_shift($segments).'Controller');
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
 
                 $controller = new $controllerName($this->connection);
                 $controller->$actionName();
+
+                $parameters = $segments;
+
+                break;
             }
         }
 

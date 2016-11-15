@@ -38,10 +38,11 @@ class Router
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
 
-                $controller = new $controllerName($this->connection);
-                $controller->$actionName();
-
                 $parameters = $segments;
+
+                $controller = new $controllerName($this->connection);
+
+                call_user_func_array(array($controller,$actionName),$parameters);
 
                 break;
             }

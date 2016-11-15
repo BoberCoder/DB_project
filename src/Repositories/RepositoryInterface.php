@@ -11,11 +11,11 @@ interface RepositoryInterface
     public function insert($universityData);
 
 
-    public function update();
+    public function update($universityData);
 
 
-    public function delete();
+    public function delete($universityData);
 
 
-    public function findBy();
+    public function findBy($id);
 }

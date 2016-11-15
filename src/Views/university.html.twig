@@ -22,8 +22,8 @@
                     <td>{{ university.town }}</td>
                     <td>{{ university.site }}</td>
                     <form method="post">
-                    <td><button id="remove"><a href="university/remove/{{ university.id }}">Видалити</a></button></td>
-                    <td><button id="edit"><a href="university/edit">Змінити</a></button></td>
+                    <td><button id="remove"><a href="/university/remove/{{ university.id }}">Видалити</a></button></td>
+                    <td><button id="edit"><a href="/university/edit/{{ university.id }}">Змінити</a></button></td>
                     </form>
                 </tr>
             {% endfor %}

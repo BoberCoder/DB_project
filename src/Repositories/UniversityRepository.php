@@ -13,9 +13,16 @@ class UniversityRepository implements RepositoryInterface
     }
 
     public function fetchUniversityData($statement){
-        $university = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        while ($university = $statement->fetch()){
+            $universities[] = [
+                'id' =>$university['id'],
+                'name' =>$university['name'],
+                'town' =>$university['town'],
+                'site' =>$university['site'],
+            ];
+        }
 
-        return $university;
+        return $universities;
     }
 
     public function findAll()
@@ -24,9 +31,13 @@ class UniversityRepository implements RepositoryInterface
         return $this->fetchUniversityData($statement);
 
     }
-    public function findBy()
+    public function findBy($id)
     {
-        // TODO: Implement findBy() method.
+        $statement = $this->connector->prepare('SELECT * FROM university WHERE id = :id LIMIT 1');
+        $statement->bindValue(':id', (int) $id);
+        $statement->execute();
+        $universityData = $this->fetchUniversityData($statement);
+        return $universityData[0];
     }
     public function insert($universityData)
     {
@@ -36,11 +47,17 @@ class UniversityRepository implements RepositoryInterface
         $statement->bindValue(':site',$universityData['site']);
         return $statement->execute();
     }
-    public function update()
+    public function update($universityData)
     {
-        // TODO: Implement update() method.
+        $statement = $this->connector->prepare('UPDATE university SET name = :name, town = :town, site = :site WHERE id = :id');
+        $statement->bindValue(':name',$universityData['name']);
+        $statement->bindValue(':town',$universityData['town']);
+        $statement->bindValue(':site',$universityData['site']);
+        $statement->bindValue(':id',$universityData['id']);
+
+        return $statement->execute();
     }
-    public function delete()
+    public function delete($universityData)
     {
         $statement = $this->connector->prepare("DELETE FROM university WHERE  id = :id");
         $statement->bindvalue(':id',$universityData['id'],\PDO::PARAM_INT);

@@ -45,7 +45,36 @@ class UniversityController
 
     }
 
-    public function actionRemove(){
+    public function actionRemove($id){
+
+        $this->repository->delete(['id' => $id]);
+        return $this->actionList();
+
+    }
+
+    public function actionEdit($id){
+
+        if (isset($_POST['submit'])){
+            $this->repository->update(
+                [
+                    'name' => $_POST['name'],
+                    'town' => $_POST['town'],
+                    'site' => $_POST['site'],
+                    'id'   => (int) $id,
+
+                ]
+            );
+            return $this->actionList();
+        }
+
+        $universityData = $this->repository->findBy($id);
+        return $this->twig->display('university_new.html.twig',
+            [
+                'name' => $universityData['name'],
+                'town' => $universityData['town'],
+                'site' => $universityData['site'],
+            ]
+            );
 
     }
 
